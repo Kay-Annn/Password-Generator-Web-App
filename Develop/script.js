@@ -98,6 +98,23 @@ function generatePassword(upperCaseChecked, lowerCaseChecked, numericChecked, sp
   //create reference to modal in order to remove from view by displaying none
   var modal = document.getElementById("myModal");
   modal.style.display = "none";
+
+  if (upperCaseChecked) {
+    document.getElementById("uppercase").checked = false
+  }
+
+  if (lowerCaseChecked) {
+    document.getElementById("lowercase").checked = false
+  }
+
+  if (numericChecked) {
+    document.getElementById("numeric").checked = false
+  }
+
+  if (specialCharactersChecked) {
+    document.getElementById("specialCharacter").checked = false
+  }
+
 }
 
 function preventFormReload(event) { event.preventDefault(); }
@@ -106,3 +123,5 @@ function generatePasswordSecret(charSet) {
   return '-'.repeat(passwordLength).replace(/./g, b => charSet[~~(Math.random() * charSet.length)])
 }
 
+//1.Get reference to check box value
+//2.If checked - declare as false
