@@ -15,6 +15,13 @@ generateBtn.addEventListener("click", writePassword);
 // Add event listener to the submit button 
 submitbtn.addEventListener("click", validatePasswordCriteria);
 
+// Selects element by class
+var timeEl = document.querySelector(".time");
+
+// Selects element by id
+var mainEl = document.getElementById("main");
+
+var secondsLeft = 30;
 
 //Prevents the form from reloading so that the password will remain on screen
 var form = document.getElementById("myForm");
@@ -93,6 +100,7 @@ function generatePassword(upperCaseChecked, lowerCaseChecked, numericChecked, sp
   console.log(fullCharset)
   var secretPassword = generatePasswordSecret(fullCharset)
   console.log("Your password length is", passwordLength)
+  alert("Password will disappear in 30 seconds - Please save!")
   //Targeting password text area to add secret password to text area
   document.getElementById("password").textContent = secretPassword
   //create reference to modal in order to remove from view by displaying none
@@ -115,13 +123,38 @@ function generatePassword(upperCaseChecked, lowerCaseChecked, numericChecked, sp
     document.getElementById("specialCharacter").checked = false
   }
 
+  function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function () {
+      secondsLeft--;
+      timeEl.textContent = secondsLeft + " seconds left till password disappear.";
+
+      if (secondsLeft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);
+        // Calls function to hide password
+        hidePassword();
+      }
+
+    }, 1000);
+
+
+  }
+
+  setTime();
+
 }
 
+function hidePassword() {
+  secondsLeft = 30
+  document.getElementById("password").textContent = " ";
+  timeEl.textContent = "";
+}
 function preventFormReload(event) { event.preventDefault(); }
 
 function generatePasswordSecret(charSet) {
   return '-'.repeat(passwordLength).replace(/./g, b => charSet[~~(Math.random() * charSet.length)])
 }
 
-//1.Get reference to check box value
-//2.If checked - declare as false
+
+
