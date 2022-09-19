@@ -176,4 +176,14 @@ button[disabled] {
 
 #myBtn{
   display: none;
+  
 }
+
+@media (max-width: 392px) {
+.time{
+  margin-top: 5%;
+  font-size: 12px;
+}
+}
+
+  
