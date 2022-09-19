@@ -19,7 +19,7 @@ I learned how to use JavaScript to add functions to my HTML elements by calling 
 I learnt that in order to make a variable accessible to a function that is not within that same function, you have to declare it as a global variable. 
 
 Please feel free to review my repository at the following link: 
-
+https://kay-annn.github.io/Password-Generator-Web-App/
 
 ## Licence
 MIT
